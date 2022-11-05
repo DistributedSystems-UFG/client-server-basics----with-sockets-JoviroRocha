@@ -1,50 +1,14 @@
 from socket  import *
 from constCS import *
 
-global add
-add = float(1)
-global subtract
-subtract = float(2)
-global multiply
-multiply = float(3)
-global divide
-divide = float(4)
-
-def isNotANumber (data):
-  for item in data:
-    try:
-      float(item)
-    except ValueError:
-      return True
-  return False
-
 def calculate(data, conn):
 
-    data[0] = float(data[0])
-    data[1] = float(data[1])
-    data[2] = float(data[2])
-
-    if (data[0] == add):
-      data = str(data[1] + data[2])
-      conn.send(str.encode(data))
+    try:
+      data = eval(data)
+    except:
+      data = "Error"
     
-    elif (data[0] == subtract):      
-      data = str(data[1] - data[2])
-      conn.send(str.encode(data))  
-
-    elif (data[0] == multiply):     
-      data = str(data[1] * data[2])
-      conn.send(str.encode(data))  
-
-    elif (data[0] == divide):
-      if (data[2] == 0):
-        data = "DivisionError"      
-      else:
-        data = str(data[1] / data[2])
-      conn.send(str.encode(data))
-    
-    else:
-      conn.send(str.encode("Error"))
+    conn.send(str.encode(str(data)))
 
 s = socket(AF_INET, SOCK_STREAM) 
 s.bind((HOST, PORT))  
@@ -68,13 +32,15 @@ Have an excelent day!
   elif (data == "man"):
 
     data = """
-Choose one of the following operations and then choose the numbers that you want to apply the operation.
-1 - Addition.
-2 - Subtraction.
-3 - Multiplication.
-4 - Division 
-As the following example: (100 + 50) => 1 100 50.
-
+Enter your math equation.
+Operations:
+% ==> Modulus
+** ==> Exponentiation
+// ==> Floor division
+/ ==> Division
+* ==> Multiplication
++ ==> Addition
+- ==> Subtraction
 Or type \"end\" to end the program.
 """
     conn.send(str.encode(data))
@@ -93,12 +59,7 @@ Or type \"end\" to end the program.
    / ::::::::::::: \\       
   (_________________) 
               
-Choose one of the following operations and then choose the numbers that you want to apply the operation.
-1 - Addition.
-2 - Subtraction.
-3 - Multiplication.
-4 - Division 
-As the following example: (100 + 50) => 1 100 50.
+Enter your equation!
 
 Or type \"end\" to end the program.
 
@@ -107,11 +68,6 @@ You can also type \"man\" if you can't recall the operations.
     conn.send(str.encode(data)) 
 
   else:  
-
-    data = data.split()
-    if( len(data) != 3 or isNotANumber(data)):
-      conn.send(str.encode("Error"))
-    else:
       calculate(data, conn) 
 
 conn.close()              

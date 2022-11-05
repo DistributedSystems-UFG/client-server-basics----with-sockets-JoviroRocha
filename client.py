@@ -17,10 +17,9 @@ def sendData(s):
 def recieveData(controler, s):
     data = s.recv(1024)
     data = bytes.decode(data)
+    
     if (data == "Error"):
         print("Sorry but an error ocurred with your request! Try again!\n")
-    elif (data == "DivisionError"):
-        print("There is no division by zero!\n")
     elif (controler == "end" or controler == "man" or controler == "start"):
         print (data)
     else:
