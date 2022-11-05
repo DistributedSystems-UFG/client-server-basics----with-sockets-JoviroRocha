@@ -1,29 +1,41 @@
 from asyncio import constants
 from socket  import *
-from constCS import * 
+from constCS import *
 
 def initialize(controler, s):
     controler = "start"
     s.send(str.encode(controler))
-    recieveData(s)
+    recieveData(controler, s)
 
 def sendData(s):
     controler = input()
+    if(controler == ""): 
+        controler = "Error"
     s.send(str.encode(controler))
     return controler
 
-def recieveData(s):
+def recieveData(controler, s):
     data = s.recv(1024)
-    print (bytes.decode(data))
+    data = bytes.decode(data)
+    if (data == "Error"):
+        print("Sorry but an error ocurred with your request! Try again!\n")
+    elif (data == "DivisionError"):
+        print("There is no division by zero!\n")
+    elif (controler == "end" or controler == "man" or controler == "start"):
+        print (data)
+    else:
+        print("\n\nThe answear is: ", data, "\n\n")
+    print(":.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.:\n")    
 
 s = socket(AF_INET, SOCK_STREAM)
-s.connect((HOST, PORT)) # connect to server (block until accepted)
+s.connect((HOST, PORT)) 
 controler = ""
 initialize(controler, s)
 
 while True:
     
-    if (sendData(s) == "end"): break
-    recieveData(s)
-    
+    controler = sendData(s)
+    recieveData(controler, s)
+    if(controler == "end"): break
+
 s.close()
