@@ -2,10 +2,14 @@
 
 
  Este programa realiza funções básicas de calculadora.
+
  O cliente pode enviar para o servidor a sua expressão matemática e o servidor retornará a resposta.
+
  Caso haja algum erro na sua requisição, o servidor retornará uma mensagem de erro.
 
  Voce também pode mandar os comandos "end" e "man".
+  
+ Ambos os comandos não são case sensitive.
 
  ## "Man"
 
