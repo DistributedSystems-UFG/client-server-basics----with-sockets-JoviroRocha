@@ -7,8 +7,9 @@ def initialize(controler, s):
     s.send(str.encode(controler))
     recieveData(controler, s)
 
-def sendData(s):
+def sendData(controler, s):
     controler = input()
+    controler = controler.lower()
     if(controler == ""): 
         controler = "Error"
     s.send(str.encode(controler))
@@ -33,7 +34,7 @@ initialize(controler, s)
 
 while True:
     
-    controler = sendData(s)
+    controler = sendData(controler, s)
     recieveData(controler, s)
     if(controler == "end"): break
 
