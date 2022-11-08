@@ -22,3 +22,9 @@
  ## Erros:
 
  Caso haja um erro na requisição o servidor enviará o código "Error" que é tratado pelo cliente. 
+
+## Link:
+
+Segue abaixo o link para o vídeo no youtube.
+
+https://youtu.be/eIzwWzCsl1Y
