@@ -19,12 +19,12 @@ def recieveData(controler, s):
     data = bytes.decode(data)
     
     if (data == "Error"):
-        print("Sorry but an error ocurred with your request! Try again!\n")
+        print("Sorry but an error ocurred with your request! \nIf you are sendind a math expression, maybe there is one missing bracket, or maybe you are dividing for zero! \nTry again!\n")
     elif (controler == "end" or controler == "man" or controler == "start"):
         print (data)
     else:
         print("\n\nThe answear is: ", data, "\n\n")
-    print(":.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.:\n")    
+    print(":.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.::.:.:.:.:.:.:.:.:.:.::.:.:.:.:.::.:.:.:.:.:\n")    
 
 s = socket(AF_INET, SOCK_STREAM)
 s.connect((HOST, PORT)) 

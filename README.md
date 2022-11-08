@@ -1,13 +1,20 @@
 # ClientServerBasics
-Starter code for the basic client-server assignment
 
 
-Este template corresponde ao exemplo da Fig. 2.3 do livro. O exercício consiste em acrescentar funcionalidade ao servidor para torná-lo mais útil. Essa funcionalidade deve ser acessível aos clientes. Por exemplo, o servidor pode ser uma espécie de calculadora remota. O cliente passa dois valores numéricos, juntamente nome de uma operação (ex.: add, subtract, multiply, divide) e o servidor executa a operação respectiva e retorna seu resultado para o cliente. Você pode implementar outro tipo de servidor (diferente da calculadora). O imporante é que ele ofereça pelo menos três operações diferentes que os clientes podem utilizar remotamente, passando dados para serem processados e recebendo o resultado desse processamento como resposta.
+ Este programa realiza funções básicas de calculadora.
+ O cliente pode enviar para o servidor a sua expressão matemática e o servidor retornará a resposta.
+ Caso haja algum erro na sua requisição, o servidor retornará uma mensagem de erro.
 
-Tarefa individual.
+ Voce também pode mandar os comandos "end" e "man".
 
-Incluir um Readme descritivo do sistema implementado.
+ ## "Man"
 
-Incluir, no Readme, o link para o vídeo demonstrativo da execução do programa no AWS.
+ O comando "man" retorna um manual com todas as operações possíveis de serem executadas.
 
-Todo o código demais artefatos, incluindo o (link para o) vídeo demonstrativo, devem ser entregues via GitHub Classroom. 
+ ## "End"
+
+ O comando "end" encerra o cliente e o servidor.
+
+ ## Erros:
+
+ Caso haja um erro na requisição o servidor enviará o código "Error" que é tratado pelo cliente. 
