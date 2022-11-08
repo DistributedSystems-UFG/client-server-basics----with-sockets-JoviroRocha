@@ -36,6 +36,8 @@ while True:
     
     controler = sendData(controler, s)
     recieveData(controler, s)
-    if(controler == "end"): break
+    if(controler == "end"): 
+        s.close()
+        break
 
 s.close()
